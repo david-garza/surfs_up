@@ -14,6 +14,9 @@ from sqlalchemy import create_engine, func
 # Flask dependencies
 from flask import Flask, jsonify
 
+# Magical values
+version_num = "v1.0"
+
 # Set up the Database
 engine = create_engine("sqlite:///hawaii.sqlite")
 
@@ -36,16 +39,16 @@ app = Flask(__name__)
 
 def welcome():
     return(
-    '''
+    f'''
     Welcome to the Climate Analysis API!
     Available Routes:
-    /api/v1.0/precipitation
-    /api/v1.0/stations
-    /api/v1.0/tobs
-    /api/v1.0/temp/start/end
+    /api/{version_num}/precipitation
+    /api/{version_num}/stations
+    /api/{version_num}/tobs
+    /api/{version_num}/temp/start/end
     ''')
 
-@app.route("/api/v1.0/precipitation")
+@app.route(f"/api/{version_num}/precipitation")
 
 def precipitation():
     prev_year = dt.date(2017, 8, 23) - dt.timedelta(days=365)
@@ -53,3 +56,10 @@ def precipitation():
       filter(Measurement.date >= prev_year).all()
     precip = {date: prcp for date, prcp in precipitation}
     return jsonify(precip)
+
+@app.route(f"/api/{version_num}/stations")
+
+def stations():
+  results = session.query(Station.station).all()
+  stations = list(np.ravel(results))
+  return jsonify(stations=stations)
