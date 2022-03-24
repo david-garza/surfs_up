@@ -25,12 +25,26 @@ Two additional queries i would recommend i precipitation and wind speeds. Rain c
 
 The provide data set only contains station, temperatures, and precipitation. Requesting wind speed data could determine how windy it could get for surfers (bigger waves or unsafe conditions).
 
-With the data given. It is possible to determine the percent of rainless days. Using the following query:
+### Precipitation Query
+
+Historical precipitation data can be found using the following query:
 
 ![Query](./resources/dry_query.PNG)
 
-The historical percentage of rain free days for each month is:
+Rain statistics:
 
-![Percent rainless](./resources/dry.PNG)
+#### June
+![Rain June](./resources/june_rain.PNG)
 
-Almost 40% of the days in June are rain free, December could be a concern!
+#### December 
+![Rain December](./resources/december_rain.PNG)
+
+### Station Activity
+
+The activity level for each station by month can also be queried using the following:
+
+![Query](./resources/station_query.PNG)
+
+Giving the station activityby month:
+
+![Stations](./resources/stations.PNG)
