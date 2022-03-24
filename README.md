@@ -21,4 +21,4 @@ Key findings
 
 It appears that the temperatures are stable and constant throughout the year. This is great for year round surfing and ice cream sales. Caution should be given to the month of December because it may have a few days that may be too cold for surfing and ice cream while winter storms blow through.
 
-Two additional queries that should be run are preciptation and wind strength. Trying to surf or eat ice cream during a windy and rainy storm can be difficult!
+Two additional queries are preciptation and wind strength. Trying to surf or eat ice cream during a windy and rainy storm can be difficult!
