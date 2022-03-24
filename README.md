@@ -45,6 +45,6 @@ The activity level for each station by month can also be queried using the follo
 
 ![Query](./resources/station_query.PNG)
 
-Giving the station activityby month:
+Giving the station activity by month:
 
 ![Stations](./resources/stations.PNG)
