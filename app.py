@@ -40,12 +40,12 @@ app = Flask(__name__)
 def welcome():
     return(
     f'''
-    Welcome to the Climate Analysis API!
-    Available Routes:
-    /api/{version_num}/precipitation
-    /api/{version_num}/stations
-    /api/{version_num}/tobs
-    /api/{version_num}/temp/start/end
+    Welcome to the Climate Analysis API!<br/>
+    Available Routes:<br/>
+    /api/{version_num}/precipitation<br/>
+    /api/{version_num}/stations<br/>
+    /api/{version_num}/tobs<br/>
+    /api/{version_num}/temp/start/end<br/>
     ''')
 
 @app.route(f"/api/{version_num}/precipitation")
@@ -64,7 +64,7 @@ def stations():
   stations = list(np.ravel(results))
   return jsonify(stations=stations)
 
-@app.route("/api/v1.0/tobs")
+@app.route(f"/api/{version_num}/tobs")
 def temp_monthly():
     prev_year = dt.date(2017, 8, 23) - dt.timedelta(days=365)
     results = session.query(Measurement.tobs).\
@@ -73,8 +73,8 @@ def temp_monthly():
     temps = list(np.ravel(results))
     return jsonify(temps=temps)
 
-@app.route("/api/v1.0/temp/<start>")
-@app.route("/api/v1.0/temp/<start>/<end>")
+@app.route(f"/api/{version_num}/temp/<start>")
+@app.route(f"/api/{version_num}/temp/<start>/<end>")
 def stats(start=None, end=None):
     sel = [func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)]
     
@@ -89,3 +89,7 @@ def stats(start=None, end=None):
         filter(Measurement.date <= end).all()
     temps = list(np.ravel(results))
     return jsonify(temps)
+
+# Added after lecture, not in module
+if __name__ == "__main__":
+    app.run(debug=True)
